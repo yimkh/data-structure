@@ -1,4 +1,4 @@
-package struction
+package components
 
 import "fmt"
 
