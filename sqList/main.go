@@ -1,6 +1,9 @@
 package main
 
-import "data-structure/sqList/components"
+import (
+	"data-structure/sqList/components"
+	"fmt"
+)
 
 func main() {
 	var alist components.SqLists
@@ -9,4 +12,7 @@ func main() {
 	alist.AddList(data)
 	alist.PrintLength()
 	alist.PrintSqList()
+
+	i := 2
+	fmt.Printf("the element of %v : %v", i, alist.GetElem(i))
 }

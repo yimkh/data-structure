@@ -99,3 +99,15 @@ func (sqList *SqLists) Delete(locat int) {
 		sqList.length--
 	}
 }
+
+func (sqList *SqLists) GetElem(locat int) int {
+	if locat < 1 || locat > sqList.length {
+		fmt.Println("locat is illegal")
+		return 0
+	} else if sqList.IsEmpty() {
+		fmt.Println("empty!!!")
+		return 0
+	} else {
+		return sqList.data[locat-1]
+	}
+}

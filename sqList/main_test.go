@@ -44,3 +44,16 @@ func TestAddList(t *testing.T) {
 	alist.PrintSqList()
 	alist.PrintLength()
 }
+
+func TestGetElem(t *testing.T) {
+	var alist components.SqLists
+	alist = components.Init(5)
+	data := []int{0, 1, 2}
+	alist.AddList(data)
+	alist.PrintLength()
+	alist.PrintSqList()
+
+	fmt.Println("-----getElem-----")
+	i := 2
+	fmt.Printf("the element of %v : %v", i, alist.GetElem(i))
+}
