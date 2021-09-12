@@ -100,7 +100,7 @@ func (sqList *SqLists) Delete(locat int) {
 	}
 }
 
-func (sqList *SqLists) GetElem(locat int) int {
+func (sqList SqLists) GetElem(locat int) int {
 	if locat < 1 || locat > sqList.length {
 		fmt.Println("locat is illegal")
 		return 0
@@ -110,4 +110,14 @@ func (sqList *SqLists) GetElem(locat int) int {
 	} else {
 		return sqList.data[locat-1]
 	}
+}
+
+//第几个元素
+func (sqList SqLists) LocateElem(value int) int {
+	for i := 0; i < sqList.length; i++ {
+		if sqList.data[i] == value {
+			return i + 1
+		}
+	}
+	return 0
 }

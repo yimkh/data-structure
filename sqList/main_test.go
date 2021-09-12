@@ -57,3 +57,15 @@ func TestGetElem(t *testing.T) {
 	i := 2
 	fmt.Printf("the element of %v : %v", i, alist.GetElem(i))
 }
+
+func TestLocateElem(t *testing.T) {
+	var alist components.SqLists
+	alist = components.Init(5)
+	data := []int{0, 1, 2}
+	alist.AddList(data)
+	alist.PrintSqList()
+	alist.PrintLength()
+
+	v := 2
+	fmt.Printf("the element location of %v : %v", v, alist.LocateElem(v))
+}

@@ -13,6 +13,6 @@ func main() {
 	alist.PrintLength()
 	alist.PrintSqList()
 
-	i := 2
-	fmt.Printf("the element of %v : %v", i, alist.GetElem(i))
+	v := 2
+	fmt.Printf("the element location of %v : %v", v, alist.LocateElem(v))
 }
