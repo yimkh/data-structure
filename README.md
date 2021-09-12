@@ -32,3 +32,9 @@ func (sqList SqLists) GetElem(locat int) int
 
 func (sqList SqLists) LocateElem(value int) int
 ```
+### 单链表
+规定：
+1.带头结点
+2.每个真正结点的值均 >= 0
+3.增删改查按顺序，1代表第一个有真正值的结点（头结点次序为0，值为-1）
+4.返回-1，代表没有此项值或结点次序（头结点除外）
