@@ -3,14 +3,20 @@ package main
 import "data-structure/sqList/components"
 
 func main() {
-	components.Init(10)
-	components.PrintSqList()
-	for i := 0; i < 9; i++ {
-		components.Add(i)
-	}
-	components.Insert(5, 100)
-	components.PrintLength()
-	components.Delete(2)
-	components.PrintLength()
-	components.Delete(10)
+	var alist components.SqLists
+	alist = components.Init(10)
+	// alist.PrintSqList()
+	// for i := 0; i < 9; i++ {
+	// 	alist.Add(i)
+	// }
+	// alist.Insert(5, 100)
+	// alist.PrintLength()
+	// alist.Delete(2)
+	// alist.PrintLength()
+	// alist.Delete(10)
+
+	data := []int{0, 1, 2}
+	alist.AddList(data)
+	alist.PrintLength()
+	alist.PrintSqList()
 }
