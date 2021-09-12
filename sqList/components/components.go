@@ -83,11 +83,10 @@ func (sqList *SqLists) Insert(locat int, data int) {
 		}
 		sqList.data[locat] = data
 		sqList.length++
-		sqList.PrintSqList()
 	}
 }
 
-func (sqList SqLists) Delete(locat int) {
+func (sqList *SqLists) Delete(locat int) {
 	if locat < 1 || locat > sqList.length {
 		fmt.Println("locat is illegal")
 	} else if sqList.IsEmpty() {
@@ -98,6 +97,5 @@ func (sqList SqLists) Delete(locat int) {
 		}
 		sqList.data[sqList.length-1] = 0
 		sqList.length--
-		sqList.PrintSqList()
 	}
 }
