@@ -9,4 +9,8 @@ func main() {
 		components.Add(i)
 	}
 	components.Insert(5, 100)
+	components.PrintLength()
+	components.Delete(2)
+	components.PrintLength()
+	components.Delete(10)
 }

@@ -27,6 +27,10 @@ func PrintSqList() {
 	}
 }
 
+func PrintLength() {
+	fmt.Printf("length = %v\n", sqList.length)
+}
+
 func IsEmpty() bool {
 	if sqList.length == 0 {
 		return true
@@ -64,6 +68,21 @@ func Insert(locat int, data int) {
 		}
 		sqList.data[locat] = data
 		sqList.length++
+		PrintSqList()
+	}
+}
+
+func Delete(locat int) {
+	if locat < 1 || locat > sqList.length {
+		fmt.Println("locat is illegal")
+	} else if IsEmpty() {
+		fmt.Println("empty!!!")
+	} else {
+		for i := locat - 1; i < sqList.length-1; i++ {
+			sqList.data[i] = sqList.data[i+1]
+		}
+		sqList.data[sqList.length-1] = 0
+		sqList.length--
 		PrintSqList()
 	}
 }
