@@ -133,3 +133,17 @@ func (lNode *LNode) LocatElem(value int) (*LNode, int) {
 	}
 	return Init().NextlNode, -1
 }
+
+func (lNode *LNode) Length() int {
+	var lNodeScanner *LNode
+	lNodeScanner = lNode
+	i := 0
+	for ; lNodeScanner.NextlNode != nil; i++ {
+		lNodeScanner = lNodeScanner.NextlNode
+
+	}
+	if i == 0 {
+		return 0
+	}
+	return i
+}
