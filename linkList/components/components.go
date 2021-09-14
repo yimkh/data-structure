@@ -23,13 +23,33 @@ func (lNode LNode) IsEmpty() bool {
 	}
 }
 
-func (lNode *LNode) AddInHead(newlNode *LNode) {
-	if newlNode == nil {
+func (lNode *LNode) IsIllegal() bool {
+	if lNode == nil {
 		fmt.Println("lnode is nil")
+		return true
+	}
+	return false
+}
+
+func (lNode *LNode) AddInHead(newlNode *LNode) {
+	if newlNode.IsIllegal() {
 		return
 	}
 	var lNodeScanner *LNode
 	lNodeScanner = lNode
+	newlNode.NextlNode = lNodeScanner.NextlNode
+	lNodeScanner.NextlNode = newlNode
+}
+
+func (lNode *LNode) AddInEnd(newlNode *LNode) {
+	if newlNode.IsIllegal() {
+		return
+	}
+	var lNodeScanner *LNode
+	lNodeScanner = lNode
+	for lNodeScanner.NextlNode != nil {
+		lNodeScanner = lNodeScanner.NextlNode
+	}
 	newlNode.NextlNode = lNodeScanner.NextlNode
 	lNodeScanner.NextlNode = newlNode
 }
@@ -51,6 +71,9 @@ func (lNode LNode) PrintlNode() {
 }
 
 func (lNode *LNode) Insert(locat int, newlNode *LNode) {
+	if newlNode.IsIllegal() {
+		return
+	}
 	if locat < 1 {
 		fmt.Println("locat is illegal")
 		return
@@ -71,21 +94,42 @@ func (lNode *LNode) Insert(locat int, newlNode *LNode) {
 	}
 }
 
-func (lNode LNode) GetElem(locat int) (value int) {
+func (lNode *LNode) InsertNext(newlNode *LNode) {
+	if newlNode.IsIllegal() {
+		return
+	}
+	newlNode.NextlNode = lNode.NextlNode
+	lNode.NextlNode = newlNode
+}
+
+func (lNode *LNode) GetElem(locat int) *LNode {
 	if locat < 1 {
 		fmt.Println("locat is illegal")
-		return -1
+		return Init().NextlNode
 	} else {
 		var lNodeScanner *LNode
-		lNodeScanner = &lNode
+		lNodeScanner = lNode
 		i := 0
 		for ; i < locat && lNodeScanner.NextlNode != nil; i++ {
 			lNodeScanner = lNodeScanner.NextlNode
 		}
 		if i < locat {
 			fmt.Println("up to max")
-			return -1
+			return Init().NextlNode
 		}
-		return lNodeScanner.Data
+		return lNodeScanner
 	}
+}
+
+func (lNode *LNode) LocatElem(value int) (*LNode, int) {
+	var lNodeScanner *LNode
+	lNodeScanner = lNode
+	i := 0
+	for ; lNodeScanner.NextlNode != nil; i++ {
+		if lNodeScanner.Data == value {
+			return lNodeScanner, i
+		}
+		lNodeScanner = lNodeScanner.NextlNode
+	}
+	return Init().NextlNode, -1
 }
