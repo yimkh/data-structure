@@ -79,7 +79,7 @@ func (lNode LNode) GetElem(locat int) (value int) {
 		var lNodeScanner *LNode
 		lNodeScanner = &lNode
 		i := 0
-		for ; i <= locat && lNodeScanner.NextlNode != nil; i++ {
+		for ; i < locat && lNodeScanner.NextlNode != nil; i++ {
 			lNodeScanner = lNodeScanner.NextlNode
 		}
 		if i < locat {
