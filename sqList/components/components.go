@@ -21,8 +21,8 @@ func Init(maxSize int) SqLists {
 	return sqList
 }
 
-func (sqList SqLists) PrintSqList() {
-	if sqList.IsEmpty() {
+func PrintSqList(sqList SqLists) {
+	if IsEmpty(sqList) {
 		fmt.Println("empty!!!")
 	} else {
 		for i := 0; i < sqList.length; i++ {
@@ -31,11 +31,11 @@ func (sqList SqLists) PrintSqList() {
 	}
 }
 
-func (sqList SqLists) PrintLength() {
+func PrintLength(sqList SqLists) {
 	fmt.Printf("length = %v\n", sqList.length)
 }
 
-func (sqList SqLists) IsEmpty() bool {
+func IsEmpty(sqList SqLists) bool {
 	if sqList.length == 0 {
 		return true
 	} else {
@@ -43,7 +43,7 @@ func (sqList SqLists) IsEmpty() bool {
 	}
 }
 
-func (sqList SqLists) IsFull() bool {
+func IsFull(sqList SqLists) bool {
 	if sqList.length >= sqList.maxSize {
 		return true
 	} else {
@@ -51,8 +51,8 @@ func (sqList SqLists) IsFull() bool {
 	}
 }
 
-func (sqList *SqLists) Add(data int) {
-	if sqList.IsFull() {
+func Add(sqList *SqLists, data int) {
+	if IsFull(*sqList) {
 		fmt.Println("full!!!")
 	} else {
 		sqList.data[sqList.length] = data
@@ -60,36 +60,22 @@ func (sqList *SqLists) Add(data int) {
 	}
 }
 
-func (sqList *SqLists) AddList(data []int) {
-	if sqList.IsFull() {
+func AddList(sqList *SqLists, data []int) {
+	if IsFull(*sqList) {
 		fmt.Println("full!!!")
 	} else if sqList.length+len(data) > sqList.maxSize {
 		fmt.Println("up to max")
 	} else {
 		for i := 0; i < len(data); i++ {
-			sqList.Add(data[i])
+			Add(sqList, data[i])
 		}
 	}
 }
 
-func (sqList *SqLists) Insert(locat int, data int) {
-	if locat < 1 || locat > sqList.length+1 {
-		fmt.Println("locat is illegal")
-	} else if sqList.IsFull() {
-		fmt.Println("full!!!")
-	} else {
-		for i := sqList.length; i >= locat; i-- {
-			sqList.data[i] = sqList.data[i-1]
-		}
-		sqList.data[locat] = data
-		sqList.length++
-	}
-}
-
-func (sqList *SqLists) Delete(locat int) {
+func Delete(sqList *SqLists, locat int) {
 	if locat < 1 || locat > sqList.length {
 		fmt.Println("locat is illegal")
-	} else if sqList.IsEmpty() {
+	} else if IsEmpty(*sqList) {
 		fmt.Println("empty!!!")
 	} else {
 		for i := locat - 1; i < sqList.length-1; i++ {
@@ -100,11 +86,25 @@ func (sqList *SqLists) Delete(locat int) {
 	}
 }
 
-func (sqList SqLists) GetElem(locat int) int {
+func Insert(sqList *SqLists, locat int, data int) {
+	if locat < 1 || locat > sqList.length+1 {
+		fmt.Println("locat is illegal")
+	} else if IsFull(*sqList) {
+		fmt.Println("full!!!")
+	} else {
+		for i := sqList.length; i >= locat; i-- {
+			sqList.data[i] = sqList.data[i-1]
+		}
+		sqList.data[locat] = data
+		sqList.length++
+	}
+}
+
+func GetElem(sqList SqLists, locat int) int {
 	if locat < 1 || locat > sqList.length {
 		fmt.Println("locat is illegal")
 		return 0
-	} else if sqList.IsEmpty() {
+	} else if IsEmpty(sqList) {
 		fmt.Println("empty!!!")
 		return 0
 	} else {
@@ -112,8 +112,7 @@ func (sqList SqLists) GetElem(locat int) int {
 	}
 }
 
-//第几个元素
-func (sqList SqLists) LocateElem(value int) int {
+func LocateElem(sqList SqLists, value int) int {
 	for i := 0; i < sqList.length; i++ {
 		if sqList.data[i] == value {
 			return i + 1

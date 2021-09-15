@@ -1,6 +1,9 @@
 # data-structure
 ## sqList 线性表
 ### 结构体
+规定：  <br>
+1.顺序表从0开始，次序从1开始  <br>
+2.元素的值均 >= 0, 次序均 >= 1  <br>
 ```
 type SqLists struct {
 	maxSize int
@@ -12,25 +15,27 @@ type SqLists struct {
 ```
 func Init(maxSize int) SqLists
 
-func (sqList SqLists) PrintSqList()
+func PrintSqList(sqList SqLists)
 
-func (sqList SqLists) PrintLength()
+func PrintLength(sqList SqLists)
 
-func (sqList SqLists) IsEmpty() bool
+func IsEmpty(sqList SqLists) bool
 
-func (sqList SqLists) IsFull() bool 
+func IsFull(sqList SqLists) bool 
 
-func (sqList *SqLists) Add(data int)
+func Add(sqList *SqLists, data int) 
 
-func (sqList *SqLists) AddList(data []int)
+func AddList(sqList *SqLists, data []int) 
 
-func (sqList *SqLists) Insert(locat int, data int) 
+func Delete(sqList *SqLists, locat int) 
 
-func (sqList *SqLists) Delete(locat int)
+func Insert(sqList *SqLists, locat int, data int) 
 
-func (sqList SqLists) GetElem(locat int) int
+func GetElem(sqList SqLists, locat int) int 
 
-func (sqList SqLists) LocateElem(value int) int
+func LocateElem(sqList SqLists, value int) int 
+
+
 ```
 ## 单链表
 规定：  <br>
