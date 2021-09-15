@@ -90,6 +90,11 @@ func (lNode *LNode) Delete(locat int) (elem int) {
 	return elem
 }
 
+func (lNode *LNode) DeleteNode(deleteNode *LNode) {
+	deleteNode.Data = deleteNode.NextlNode.Data
+	deleteNode.NextlNode = deleteNode.NextlNode.NextlNode
+}
+
 func (lNode *LNode) Insert(locat int, newlNode *LNode) {
 	if newlNode.IsIllegal() {
 		return

@@ -23,4 +23,8 @@ func main() {
 	})
 	fmt.Println("初始链表:")
 	headlnode.PrintlNode()
+
+	fmt.Println("删除值为2的元素,删除后链表为:")
+	headlnode.DeleteNode(&b)
+	headlnode.PrintlNode()
 }
