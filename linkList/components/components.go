@@ -102,6 +102,18 @@ func (lNode *LNode) InsertNext(newlNode *LNode) {
 	lNode.NextlNode = newlNode
 }
 
+func (lNode *LNode) InsertPrior(newlNode *LNode) {
+	if newlNode.IsIllegal() {
+		return
+	}
+	newlNode.NextlNode = lNode.NextlNode
+	lNode.NextlNode = newlNode
+	temp := newlNode.Data
+	newlNode.Data = lNode.Data
+	lNode.Data = temp
+	return
+}
+
 func (lNode *LNode) GetElem(locat int) *LNode {
 	if locat < 1 {
 		fmt.Println("locat is illegal")
@@ -140,7 +152,6 @@ func (lNode *LNode) Length() int {
 	i := 0
 	for ; lNodeScanner.NextlNode != nil; i++ {
 		lNodeScanner = lNodeScanner.NextlNode
-
 	}
 	if i == 0 {
 		return 0

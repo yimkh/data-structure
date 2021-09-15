@@ -122,6 +122,34 @@ func TestInsertNest(t *testing.T) {
 	headlnode.PrintlNode()
 }
 
+func TestInsertPrior(t *testing.T) {
+	headlnode := components.Init()
+	a := components.LNode{
+		Data:      1,
+		NextlNode: nil,
+	}
+	headlnode.AddInEnd(&a)
+	b := components.LNode{
+		Data:      2,
+		NextlNode: nil,
+	}
+	headlnode.AddInEnd(&b)
+	headlnode.AddInEnd(&components.LNode{
+		Data:      3,
+		NextlNode: nil,
+	})
+	fmt.Println("初始链表:")
+	headlnode.PrintlNode()
+
+	fmt.Println("在值等于2的结点前插入一个等于4的结点")
+	d := components.LNode{
+		Data:      4,
+		NextlNode: nil,
+	}
+	b.InsertPrior(&d)
+	headlnode.PrintlNode()
+}
+
 func TestGetElem(t *testing.T) {
 	headlnode := components.Init()
 	headlnode.IsEmpty()
