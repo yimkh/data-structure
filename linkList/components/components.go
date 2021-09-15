@@ -97,6 +97,9 @@ func Delete(lNode *LNode, locat int) (elem int) {
 }
 
 func DeleteNode(lNode *LNode, deleteNode *LNode) {
+	if IsIllegal(lNode) || IsIllegal(deleteNode) {
+		return
+	}
 	deleteNode.Data = deleteNode.NextlNode.Data
 	deleteNode.NextlNode = deleteNode.NextlNode.NextlNode
 }
