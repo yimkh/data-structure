@@ -1,9 +1,12 @@
 # data-structure
+## 目录
+1.线性表  <br>
+2.单链表  <br>
 ## sqList 线性表
-### 结构体
-规定：  <br>
+### 规定: 
 1.顺序表从0开始，次序从1开始  <br>
 2.元素的值均 >= 0, 次序均 >= 1  <br>
+### 结构体
 ```
 type SqLists struct {
 	maxSize int
@@ -38,7 +41,7 @@ func LocateElem(sqList SqLists, value int) int
 
 ```
 ## 单链表
-规定：  <br>
+### 规定:
 1.带头结点（头结点次序为0，值为-1） <br>
 2.每个结点除头结点外，次序和值均 >= 0  <br>
 3.增删改查按次序，1代表第一个有真正值的结点  <br>
