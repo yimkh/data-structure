@@ -14,7 +14,7 @@ func Init() LNode {
 	}
 }
 
-func (lNode LNode) IsEmpty() bool {
+func IsEmpty(lNode LNode) bool {
 	if lNode.NextlNode == nil {
 		fmt.Println("empty!!!")
 		return true
@@ -23,7 +23,7 @@ func (lNode LNode) IsEmpty() bool {
 	}
 }
 
-func (lNode *LNode) IsIllegal() bool {
+func IsIllegal(lNode *LNode) bool {
 	if lNode == nil {
 		fmt.Println("lnode is nil")
 		return true
@@ -31,7 +31,7 @@ func (lNode *LNode) IsIllegal() bool {
 	return false
 }
 
-func (lNode *LNode) Length() int {
+func Length(lNode *LNode) int {
 	var lNodeScanner *LNode
 	lNodeScanner = lNode
 	i := 0
@@ -44,10 +44,13 @@ func (lNode *LNode) Length() int {
 	return i
 }
 
-func (lNode LNode) PrintlNode() {
+func PrintlNode(lNode LNode) {
+	if IsIllegal(&lNode) {
+		return
+	}
 	var lNodeScanner *LNode
 	lNodeScanner = &lNode
-	if lNodeScanner.IsEmpty() {
+	if IsEmpty(*lNodeScanner) {
 		return
 	}
 	for i := 0; lNodeScanner != nil; i++ {
@@ -60,8 +63,8 @@ func (lNode LNode) PrintlNode() {
 	}
 }
 
-func (lNode *LNode) AddInHead(newlNode *LNode) {
-	if newlNode.IsIllegal() {
+func AddInHead(lNode *LNode, newlNode *LNode) {
+	if IsIllegal(newlNode) {
 		return
 	}
 	var lNodeScanner *LNode
@@ -70,8 +73,8 @@ func (lNode *LNode) AddInHead(newlNode *LNode) {
 	lNodeScanner.NextlNode = newlNode
 }
 
-func (lNode *LNode) AddInEnd(newlNode *LNode) {
-	if newlNode.IsIllegal() {
+func AddInEnd(lNode *LNode, newlNode *LNode) {
+	if IsIllegal(newlNode) {
 		return
 	}
 	var lNodeScanner *LNode
@@ -83,20 +86,23 @@ func (lNode *LNode) AddInEnd(newlNode *LNode) {
 	lNodeScanner.NextlNode = newlNode
 }
 
-func (lNode *LNode) Delete(locat int) (elem int) {
-	priorNode := lNode.GetElem(locat - 1)
+func Delete(lNode *LNode, locat int) (elem int) {
+	priorNode := GetElem(lNode, locat-1)
+	if IsIllegal(priorNode) {
+		return -1
+	}
 	elem = priorNode.NextlNode.Data
 	priorNode.NextlNode = priorNode.NextlNode.NextlNode
 	return elem
 }
 
-func (lNode *LNode) DeleteNode(deleteNode *LNode) {
+func DeleteNode(lNode *LNode, deleteNode *LNode) {
 	deleteNode.Data = deleteNode.NextlNode.Data
 	deleteNode.NextlNode = deleteNode.NextlNode.NextlNode
 }
 
-func (lNode *LNode) Insert(locat int, newlNode *LNode) {
-	if newlNode.IsIllegal() {
+func Insert(lNode *LNode, locat int, newlNode *LNode) {
+	if IsIllegal(newlNode) {
 		return
 	}
 	if locat < 1 {
@@ -119,16 +125,16 @@ func (lNode *LNode) Insert(locat int, newlNode *LNode) {
 	}
 }
 
-func (lNode *LNode) InsertNext(newlNode *LNode) {
-	if newlNode.IsIllegal() {
+func InsertNext(lNode *LNode, newlNode *LNode) {
+	if IsIllegal(newlNode) {
 		return
 	}
 	newlNode.NextlNode = lNode.NextlNode
 	lNode.NextlNode = newlNode
 }
 
-func (lNode *LNode) InsertPrior(newlNode *LNode) {
-	if newlNode.IsIllegal() {
+func InsertPrior(lNode *LNode, newlNode *LNode) {
+	if IsIllegal(newlNode) {
 		return
 	}
 	newlNode.NextlNode = lNode.NextlNode
@@ -139,7 +145,7 @@ func (lNode *LNode) InsertPrior(newlNode *LNode) {
 	return
 }
 
-func (lNode *LNode) GetElem(locat int) *LNode {
+func GetElem(lNode *LNode, locat int) *LNode {
 	if locat < 1 {
 		fmt.Println("locat is illegal")
 		return Init().NextlNode
@@ -158,7 +164,7 @@ func (lNode *LNode) GetElem(locat int) *LNode {
 	}
 }
 
-func (lNode *LNode) LocatElem(value int) (*LNode, int) {
+func LocatElem(lNode *LNode, value int) (*LNode, int) {
 	var lNodeScanner *LNode
 	lNodeScanner = lNode
 	i := 0

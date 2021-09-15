@@ -8,80 +8,76 @@ import (
 
 func TestLength(t *testing.T) {
 	headlnode := components.Init()
-	headlnode.IsEmpty()
-	fmt.Printf("the length is: %v\n", headlnode.Length())
-	fmt.Println("第一次尾插")
+	components.IsEmpty(headlnode)
+	fmt.Printf("the length is: %v\n", components.Length(&headlnode))
 	a := components.LNode{
 		Data:      1,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&a)
-	headlnode.PrintlNode()
-	fmt.Println("第二次尾插")
+	components.AddInEnd(&headlnode, &a)
 	b := components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&b)
-	headlnode.PrintlNode()
-	fmt.Println("第三次尾插")
-	headlnode.AddInEnd(&components.LNode{
+	components.AddInEnd(&headlnode, &b)
+	components.AddInEnd(&headlnode, &components.LNode{
 		Data:      3,
 		NextlNode: nil,
 	})
-	headlnode.PrintlNode()
+	fmt.Println("初始链表:")
+	components.PrintlNode(headlnode)
 
-	fmt.Printf("the length is: %v\n", headlnode.Length())
+	fmt.Printf("the length is: %v\n", components.Length(&headlnode))
 }
 
 func TestAddInHead(t *testing.T) {
 	headlnode := components.Init()
-	headlnode.IsEmpty()
+	components.IsEmpty(headlnode)
 	fmt.Println("第一次头插")
 	a := components.LNode{
 		Data:      1,
 		NextlNode: nil,
 	}
-	headlnode.AddInHead(&a)
-	headlnode.PrintlNode()
+	components.AddInHead(&headlnode, &a)
+	components.PrintlNode(headlnode)
 	fmt.Println("第二次头插")
 	b := components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	}
-	headlnode.AddInHead(&b)
-	headlnode.PrintlNode()
+	components.AddInHead(&headlnode, &b)
+	components.PrintlNode(headlnode)
 	fmt.Println("第三次头插")
-	headlnode.AddInHead(&components.LNode{
+	components.AddInHead(&headlnode, &components.LNode{
 		Data:      3,
 		NextlNode: nil,
 	})
-	headlnode.PrintlNode()
+	components.PrintlNode(headlnode)
 }
 
 func TestAddInEnd(t *testing.T) {
 	headlnode := components.Init()
-	headlnode.IsEmpty()
+	components.IsEmpty(headlnode)
 	fmt.Println("第一次尾插")
 	a := components.LNode{
 		Data:      1,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&a)
-	headlnode.PrintlNode()
+	components.AddInEnd(&headlnode, &a)
+	components.PrintlNode(headlnode)
 	fmt.Println("第二次尾插")
 	b := components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&b)
-	headlnode.PrintlNode()
+	components.AddInEnd(&headlnode, &b)
+	components.PrintlNode(headlnode)
 	fmt.Println("第三次尾插")
-	headlnode.AddInEnd(&components.LNode{
+	components.AddInEnd(&headlnode, &components.LNode{
 		Data:      3,
 		NextlNode: nil,
 	})
-	headlnode.PrintlNode()
+	components.PrintlNode(headlnode)
 }
 
 func TestDelete(t *testing.T) {
@@ -90,23 +86,34 @@ func TestDelete(t *testing.T) {
 		Data:      1,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&a)
+	components.AddInEnd(&headlnode, &a)
 	b := components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&b)
-	headlnode.AddInEnd(&components.LNode{
+	components.AddInEnd(&headlnode, &b)
+	components.AddInEnd(&headlnode, &components.LNode{
 		Data:      3,
 		NextlNode: nil,
 	})
 	fmt.Println("初始链表:")
-	headlnode.PrintlNode()
+	components.PrintlNode(headlnode)
 
-	deleteElem := headlnode.Delete(2)
+	fmt.Println("----------")
+
+	deleteElem2 := components.Delete(&headlnode, 2)
 	fmt.Println("删除第2个元素,删除后链表为:")
-	headlnode.PrintlNode()
-	fmt.Printf("删除元素的值为: %v\n", deleteElem)
+	components.PrintlNode(headlnode)
+	fmt.Printf("删除元素的值为: %v\n", deleteElem2)
+
+	fmt.Println("----------")
+
+	deleteElem5 := components.Delete(&headlnode, 5)
+	fmt.Println("删除第5个元素,删除后链表为:")
+	components.PrintlNode(headlnode)
+	fmt.Printf("删除元素的值为: %v\n", deleteElem5)
+
+	fmt.Println("--------------------")
 }
 
 func TestDeleteNode(t *testing.T) {
@@ -115,29 +122,29 @@ func TestDeleteNode(t *testing.T) {
 		Data:      1,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&a)
+	components.AddInEnd(&headlnode, &a)
 	b := components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&b)
-	headlnode.AddInEnd(&components.LNode{
+	components.AddInEnd(&headlnode, &b)
+	components.AddInEnd(&headlnode, &components.LNode{
 		Data:      3,
 		NextlNode: nil,
 	})
 	fmt.Println("初始链表:")
-	headlnode.PrintlNode()
+	components.PrintlNode(headlnode)
 
 	fmt.Println("删除值为2的元素,删除后链表为:")
-	headlnode.DeleteNode(&b)
-	headlnode.PrintlNode()
+	components.DeleteNode(&headlnode, &b)
+	components.PrintlNode(headlnode)
 }
 
 func TestInsert(t *testing.T) {
 	headlnode := components.Init()
-	headlnode.IsEmpty()
+	components.IsEmpty(headlnode)
 	fmt.Println("第一次插入在第一个位置")
-	headlnode.Insert(1, &components.LNode{
+	components.Insert(&headlnode, 1, &components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	})
@@ -146,57 +153,53 @@ func TestInsert(t *testing.T) {
 		Data:      1,
 		NextlNode: nil,
 	}
-	headlnode.AddInHead(&a)
-	headlnode.PrintlNode()
+	components.AddInHead(&headlnode, &a)
+	components.PrintlNode(headlnode)
 	fmt.Println("第二次插入在第一个位置")
-	headlnode.Insert(1, &components.LNode{
+	components.Insert(&headlnode, 1, &components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	})
-	headlnode.PrintlNode()
+	components.PrintlNode(headlnode)
 	fmt.Println("第二次头插")
-	headlnode.AddInHead(&components.LNode{
+	components.AddInHead(&headlnode, &components.LNode{
 		Data:      3,
 		NextlNode: nil,
 	})
-	headlnode.PrintlNode()
+	components.PrintlNode(headlnode)
 	fmt.Println("第三次插入在第五个位置")
-	headlnode.Insert(5, &components.LNode{
+	components.Insert(&headlnode, 5, &components.LNode{
 		Data:      5,
 		NextlNode: nil,
 	})
-	headlnode.PrintlNode()
+	components.PrintlNode(headlnode)
 }
 
 func TestInsertNest(t *testing.T) {
 	headlnode := components.Init()
-	headlnode.IsEmpty()
-	fmt.Println("第一次尾插")
 	a := components.LNode{
 		Data:      1,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&a)
-	headlnode.PrintlNode()
-	fmt.Println("第二次尾插")
+	components.AddInEnd(&headlnode, &a)
 	b := components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&b)
-	headlnode.PrintlNode()
-	fmt.Println("第三次尾插")
-	headlnode.AddInEnd(&components.LNode{
+	components.AddInEnd(&headlnode, &b)
+	components.AddInEnd(&headlnode, &components.LNode{
 		Data:      3,
 		NextlNode: nil,
 	})
-	headlnode.PrintlNode()
+	fmt.Println("初始链表:")
+	components.PrintlNode(headlnode)
+
 	fmt.Printf("在元素%v之后插入%v\n", 2, 4)
-	b.InsertNext(&components.LNode{
+	components.InsertNext(&b, &components.LNode{
 		Data:      4,
 		NextlNode: nil,
 	})
-	headlnode.PrintlNode()
+	components.PrintlNode(headlnode)
 }
 
 func TestInsertPrior(t *testing.T) {
@@ -205,81 +208,76 @@ func TestInsertPrior(t *testing.T) {
 		Data:      1,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&a)
+	components.AddInEnd(&headlnode, &a)
 	b := components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&b)
-	headlnode.AddInEnd(&components.LNode{
+	components.AddInEnd(&headlnode, &b)
+	components.AddInEnd(&headlnode, &components.LNode{
 		Data:      3,
 		NextlNode: nil,
 	})
 	fmt.Println("初始链表:")
-	headlnode.PrintlNode()
+	components.PrintlNode(headlnode)
 
 	fmt.Println("在值等于2的结点前插入一个等于4的结点")
 	d := components.LNode{
 		Data:      4,
 		NextlNode: nil,
 	}
-	b.InsertPrior(&d)
-	headlnode.PrintlNode()
+	components.InsertPrior(&b, &d)
+	components.PrintlNode(headlnode)
 }
 
 func TestGetElem(t *testing.T) {
 	headlnode := components.Init()
-	headlnode.IsEmpty()
+	components.IsEmpty(headlnode)
 	fmt.Println("第一次头插")
 	a := components.LNode{
 		Data:      1,
 		NextlNode: nil,
 	}
-	headlnode.AddInHead(&a)
-	headlnode.PrintlNode()
+	components.AddInHead(&headlnode, &a)
+	components.PrintlNode(headlnode)
 	fmt.Println("第二次头插")
 	b := components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	}
-	headlnode.AddInHead(&b)
-	headlnode.PrintlNode()
+	components.AddInHead(&headlnode, &b)
+	components.PrintlNode(headlnode)
 	fmt.Println("第三次头插")
-	headlnode.AddInHead(&components.LNode{
+	components.AddInHead(&headlnode, &components.LNode{
 		Data:      3,
 		NextlNode: nil,
 	})
-	headlnode.PrintlNode()
-	fmt.Printf("第%v个位置的值为: %v\n", 1, headlnode.GetElem(1).Data)
-	fmt.Printf("第%v个位置的值为: %v\n", 3, headlnode.GetElem(3).Data)
+	components.PrintlNode(headlnode)
+	fmt.Printf("第%v个位置的值为: %v\n", 1, components.GetElem(&headlnode, 1).Data)
+	fmt.Printf("第%v个位置的值为: %v\n", 3, components.GetElem(&headlnode, 3).Data)
 }
 
 func TestLocatElem(t *testing.T) {
 	headlnode := components.Init()
-	headlnode.IsEmpty()
-	fmt.Println("第一次尾插")
 	a := components.LNode{
 		Data:      1,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&a)
-	headlnode.PrintlNode()
-	fmt.Println("第二次尾插")
+	components.AddInEnd(&headlnode, &a)
 	b := components.LNode{
 		Data:      2,
 		NextlNode: nil,
 	}
-	headlnode.AddInEnd(&b)
-	headlnode.PrintlNode()
-	fmt.Println("第三次尾插")
-	headlnode.AddInEnd(&components.LNode{
+	components.AddInEnd(&headlnode, &b)
+	components.AddInEnd(&headlnode, &components.LNode{
 		Data:      3,
 		NextlNode: nil,
 	})
-	headlnode.PrintlNode()
+	fmt.Println("初始链表:")
+	components.PrintlNode(headlnode)
 
-	_, locat1 := headlnode.LocatElem(2)
-	_, locat2 := headlnode.LocatElem(5)
+	_, locat1 := components.LocatElem(&headlnode, 2)
+	_, locat2 := components.LocatElem(&headlnode, 5)
 	fmt.Printf("the location of %v: %v\n", 2, locat1)
 	fmt.Printf("the location of %v: %v\n", 5, locat2)
 }
