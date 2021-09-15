@@ -32,7 +32,7 @@ func (sqList SqLists) GetElem(locat int) int
 
 func (sqList SqLists) LocateElem(value int) int
 ```
-### 单链表
+## 单链表
 规定：  <br>
 1.带头结点（头结点次序为0，值为-1） <br>
 2.每个结点除头结点外，次序和值均 >= 0  <br>

@@ -31,6 +31,35 @@ func (lNode *LNode) IsIllegal() bool {
 	return false
 }
 
+func (lNode *LNode) Length() int {
+	var lNodeScanner *LNode
+	lNodeScanner = lNode
+	i := 0
+	for ; lNodeScanner.NextlNode != nil; i++ {
+		lNodeScanner = lNodeScanner.NextlNode
+	}
+	if i == 0 {
+		return 0
+	}
+	return i
+}
+
+func (lNode LNode) PrintlNode() {
+	var lNodeScanner *LNode
+	lNodeScanner = &lNode
+	if lNodeScanner.IsEmpty() {
+		return
+	}
+	for i := 0; lNodeScanner != nil; i++ {
+		if lNodeScanner.Data == -1 {
+			lNodeScanner = lNodeScanner.NextlNode
+		} else {
+			fmt.Printf("%v th : %v\n", i, lNodeScanner.Data)
+			lNodeScanner = lNodeScanner.NextlNode
+		}
+	}
+}
+
 func (lNode *LNode) AddInHead(newlNode *LNode) {
 	if newlNode.IsIllegal() {
 		return
@@ -54,20 +83,11 @@ func (lNode *LNode) AddInEnd(newlNode *LNode) {
 	lNodeScanner.NextlNode = newlNode
 }
 
-func (lNode LNode) PrintlNode() {
-	var lNodeScanner *LNode
-	lNodeScanner = &lNode
-	if lNodeScanner.IsEmpty() {
-		return
-	}
-	for i := 0; lNodeScanner != nil; i++ {
-		if lNodeScanner.Data == -1 {
-			lNodeScanner = lNodeScanner.NextlNode
-		} else {
-			fmt.Printf("%v th : %v\n", i, lNodeScanner.Data)
-			lNodeScanner = lNodeScanner.NextlNode
-		}
-	}
+func (lNode *LNode) Delete(locat int) (elem int) {
+	priorNode := lNode.GetElem(locat - 1)
+	elem = priorNode.NextlNode.Data
+	priorNode.NextlNode = priorNode.NextlNode.NextlNode
+	return elem
 }
 
 func (lNode *LNode) Insert(locat int, newlNode *LNode) {
@@ -144,17 +164,4 @@ func (lNode *LNode) LocatElem(value int) (*LNode, int) {
 		lNodeScanner = lNodeScanner.NextlNode
 	}
 	return Init().NextlNode, -1
-}
-
-func (lNode *LNode) Length() int {
-	var lNodeScanner *LNode
-	lNodeScanner = lNode
-	i := 0
-	for ; lNodeScanner.NextlNode != nil; i++ {
-		lNodeScanner = lNodeScanner.NextlNode
-	}
-	if i == 0 {
-		return 0
-	}
-	return i
 }
