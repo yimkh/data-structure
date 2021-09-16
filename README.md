@@ -1,12 +1,15 @@
 # data-structure
 ## 目录
+一、线性表
 1.顺序表  <br>
 2.单链表  <br>
-## sqList 线性表
+二、树
+1.哈夫曼树
+## 线性表
 ### 规定: 
 1.顺序表从0开始，次序从1开始  <br>
 2.元素的值均 >= 0, 次序均 >= 1  <br>
-### 结构体
+### 结构
 ```
 type SqLists struct {
 	maxSize int
@@ -37,8 +40,6 @@ func Insert(sqList *SqLists, locat int, data int)
 func GetElem(sqList SqLists, locat int) int 
 
 func LocateElem(sqList SqLists, value int) int 
-
-
 ```
 ## 单链表
 ### 规定:
@@ -46,7 +47,7 @@ func LocateElem(sqList SqLists, value int) int
 2.每个结点除头结点外，次序和值均 >= 0  <br>
 3.增删改查按次序，1代表第一个有真正值的结点  <br>
 4.返回-1，代表没有此项值或结点次序（头结点除外）  <br>
-### 结构体
+### 结构
 ```
 type LNode struct {
 	Data      int
@@ -82,4 +83,24 @@ func InsertPrior(lNode *LNode, newlNode *LNode)
 func GetElem(lNode *LNode, locat int) *LNode
 
 func LocatElem(lNode *LNode, value int)
+```
+## 哈夫曼树
+### 规定
+1.各结点的值均 >= 0  <br>
+### 结构
+```
+type Node struct {
+	Data         int
+	LNode, RNode *Node
+}
+```
+### 方法
+```
+func Init(data int) Node {
+
+func SortNodes(Nodes []Node) {
+
+func Huffman(Nodes []Node) []Node {
+
+func PrintHuffman(huffmanNodes []Node) {
 ```
