@@ -1,6 +1,6 @@
 # data-structure
 ## 目录
-1.线性表  <br>
+1.顺序表  <br>
 2.单链表  <br>
 ## sqList 线性表
 ### 规定: 
