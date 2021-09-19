@@ -5,7 +5,9 @@
 2.单链表  <br>
 二、树
 1.哈夫曼树
-## 线性表
+三、排序
+1.插入排序
+## 顺序表
 ### 规定: 
 1.顺序表从0开始，次序从1开始  <br>
 2.元素的值均 >= 0, 次序均 >= 1  <br>
@@ -103,4 +105,19 @@ func SortNodes(Nodes []Node) {
 func Huffman(Nodes []Node) []Node {
 
 func PrintHuffman(huffmanNodes []Node) {
+```
+## 插入排序
+### 规定
+1.升序排列  <br>
+2.插入排序: 从第2个元素开始, 向前寻找插入位置  <br>
+  直接排序: 从后向前依次寻找  <br>
+  折半排序: 从后向前，折半寻找(mid 向下取整)  <br>
+  希尔排序：分组后进行直接排序，分组由多变少
+### 方法
+```
+func DirectInsertSort(src []int)
+
+func HarfInsertSort(src []int)
+
+func ShellSort(src []int, increment int)
 ```
