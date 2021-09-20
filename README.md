@@ -7,6 +7,7 @@
 1.哈夫曼树
 三、排序
 1.插入排序
+2.选择排序
 ## 顺序表
 ### 规定: 
 1.顺序表从0开始，次序从1开始  <br>
@@ -112,12 +113,19 @@ func PrintHuffman(huffmanNodes []Node) {
 2.插入排序: 从第2个元素开始, 向前寻找插入位置  <br>
   直接排序: 从后向前依次寻找  <br>
   折半排序: 从后向前，折半寻找(mid 向下取整)  <br>
-  希尔排序：分组后进行直接排序，分组由多变少
-### 方法
+  希尔排序：分组后进行直接排序，分组由多变少 <br>
+3.选择排序：  <br>
+  冒泡排序：从后往前选出最小元素  <br>
+  快速排序：  <br>
+### 插入方法
 ```
 func DirectInsertSort(src []int)
 
 func HarfInsertSort(src []int)
 
 func ShellSort(src []int, increment int)
+```
+### 选择方法
+```
+func BubbleSort(src []int)
 ```
