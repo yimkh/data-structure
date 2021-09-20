@@ -1,3 +1,3 @@
-module data-structure/sort/select
+module data-structure/sort/swap
 
 go 1.16
