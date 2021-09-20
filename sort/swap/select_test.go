@@ -1,7 +1,7 @@
 package main
 
 import (
-	"data-structure/sort/select/components"
+	"data-structure/sort/swap/components"
 	"fmt"
 	"testing"
 )

@@ -114,7 +114,7 @@ func PrintHuffman(huffmanNodes []Node) {
   直接排序: 从后向前依次寻找  <br>
   折半排序: 从后向前，折半寻找(mid 向下取整)  <br>
   希尔排序：分组后进行直接排序，分组由多变少 <br>
-3.选择排序：  <br>
+3.交换排序：  <br>
   冒泡排序：从后往前选出最小元素  <br>
   快速排序：  <br>
 ### 插入方法
@@ -125,7 +125,7 @@ func HarfInsertSort(src []int)
 
 func ShellSort(src []int, increment int)
 ```
-### 选择方法
+### 交换方法
 ```
 func BubbleSort(src []int)
 ```
